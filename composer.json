@@ -1,0 +1,36 @@
+{
+  "name": "wp-launchpad/updater",
+  "description": "Updater from Launchpad",
+  "keywords": [
+    "wordpress"
+  ],
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "CrochetFeve0251"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "LaunchpadUpdater\\": "inc/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "LaunchpadUpdater\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "wp-launchpad/core": "^0.1"
+  },
+  "require-dev": {
+    "wp-media/phpunit": "^3.0",
+    "wp-launchpad/build": "^0.0.9"
+  },
+  "scripts": {
+    "test-unit": "\"vendor/bin/phpunit\" --testsuite unit --colors=always --configuration tests/Unit/phpunit.xml.dist",
+    "run-tests": [
+      "@test-unit"
+    ]
+  }
+}
