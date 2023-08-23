@@ -2,7 +2,8 @@
 
 namespace LaunchpadUpdater;
 
-use LaunchpadUpdater\Dependencies\LaunchpadCore\Container\AbstractServiceProvider;
+use LaunchpadCore\Container\AbstractServiceProvider;
+use League\Container\Definition\Definition;
 
 /**
  * Service provider.
@@ -15,7 +16,7 @@ class ServiceProvider extends AbstractServiceProvider
      *
      * @return string[]
      */
-    public function get_common_subscribers(): array {
+    public function get_admin_subscribers(): array {
         return [
             \LaunchpadUpdater\Subscriber::class,
         ];
@@ -28,6 +29,9 @@ class ServiceProvider extends AbstractServiceProvider
      */
     public function define()
     {
-        $this->register_service(\LaunchpadUpdater\Subscriber::class);
+        $this->register_service(\LaunchpadUpdater\Subscriber::class, function (Definition $definition) {
+            $definition->addArgument($this->getContainer()->get('prefix'));
+            $definition->addArgument($this->getContainer()->get('version'));
+        });
     }
 }
