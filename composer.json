@@ -21,11 +21,12 @@
     }
   },
   "require": {
-    "wp-launchpad/core": "^0.1"
+    "wp-launchpad/core": "^0.2"
   },
   "require-dev": {
     "wp-media/phpunit": "^3.0",
-    "wp-launchpad/build": "^0.0.9"
+    "wp-launchpad/build": "^0.0.9",
+    "wp-launchpad/phpunit-wp-hooks": "^1.0"
   },
   "scripts": {
     "test-unit": "\"vendor/bin/phpunit\" --testsuite unit --colors=always --configuration tests/Unit/phpunit.xml.dist",

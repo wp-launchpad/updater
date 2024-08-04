@@ -2,10 +2,13 @@
 
 namespace LaunchpadUpdater\Tests\Integration;
 use ReflectionObject;
+use WPLaunchpadPHPUnitWPHooks\MockHooks;
 use WPMedia\PHPUnit\Integration\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
+	use MockHooks;
+
     protected $config;
     protected static $transients         = [];
 
@@ -55,4 +58,25 @@ abstract class TestCase extends BaseTestCase
 
         $this->config = $this->getTestData( dirname( $filename ), basename( $filename, '.php' ) );
     }
+
+	public function setUp(): void
+	{
+		parent::setUp();
+		$this->mockHooks();
+	}
+
+	public function tearDown(): void
+	{
+		$this->resetHooks();
+		parent::tearDown();
+	}
+
+
+	protected function getPrefix(): string {
+		return 'test';
+	}
+
+	protected function getCurrentTest(): string {
+		return $this->getName();
+	}
 }
