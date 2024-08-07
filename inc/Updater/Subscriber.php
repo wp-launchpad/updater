@@ -150,7 +150,7 @@ class Subscriber implements PrefixAwareInterface, DispatcherAwareInterface {
 
 		// If a newer version is available, add the update.
 		if ( version_compare( $this->plugin_version, $remote_data->get_new_version(), '<' ) ) {
-			$transient_value->response[ $remote_data->get_plugin() ] = $remote_data;
+			$transient_value->response[ $remote_data->get_plugin() ] = $remote_data->dumps();
 		}
 
 		$transient_value->checked[ $remote_data->get_plugin() ] = $this->plugin_version;

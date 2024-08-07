@@ -7,37 +7,37 @@ class PluginInformation {
 	/**
 	 * @var string
 	 */
-	protected $slug;
+	protected $slug = '';
 
 	/**
 	 * @var string
 	 */
-	protected $plugin;
+	protected $plugin = '';
 
 	/**
 	 * @var string
 	 */
-	protected $new_version;
+	protected $new_version = '';
 
 	/**
 	 * @var string
 	 */
-	protected $url;
+	protected $url = '';
 
 	/**
 	 * @var string
 	 */
-	protected $package;
+	protected $package = '';
 
 	/**
 	 * @var string
 	 */
-	protected $stable_version;
+	protected $stable_version = '';
 
 	/**
 	 * @var array
 	 */
-	protected $icons;
+	protected $icons = [];
 
 	public function get_slug(): string {
 		return $this->slug;
@@ -100,5 +100,17 @@ class PluginInformation {
 	public function set_icons( array $icons ): self {
 		$this->icons = $icons;
 		return $this;
+	}
+
+	public function dumps() {
+		return [
+			'slug' => $this->slug,
+			'url' => $this->url,
+			'plugin' => $this->plugin,
+			'package' => $this->package,
+			'new_version' => $this->new_version,
+			'stable_version' => $this->stable_version,
+			'icons' => $this->icons
+		];
 	}
 }

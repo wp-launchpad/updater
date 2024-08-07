@@ -20,6 +20,7 @@ class ServiceProvider extends AbstractServiceProvider
     public function get_admin_subscribers(): array {
         return [
             \LaunchpadUpdater\Subscriber::class,
+			\LaunchpadUpdater\Updater\Subscriber::class,
         ];
     }
 
