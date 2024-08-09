@@ -226,4 +226,24 @@ class Subscriber implements PrefixAwareInterface, DispatcherAwareInterface {
 			return $this->dispatcher->apply_string_filters($this->prefix . 'update_cache_transient_name', $this->prefix . 'update_data');
 		}
 
+
+	/**
+	 * @hook plugins_api
+	 */
+		public function fetch_plugin_information($res, $action, $args) {
+			if( 'plugin_information' !== $action ) {
+				return $res;
+			}
+
+			// do nothing if it is not our plugin
+			if( plugin_basename( __DIR__ ) !== $args->slug ) {
+				return $res;
+			}
+
+			if( ! $this->provider->is_excluded_from_wp_updates()) {
+				return $res;
+			}
+
+			return $this->provider->get_plugin_information();
+		}
 }
