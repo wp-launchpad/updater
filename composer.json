@@ -21,7 +21,7 @@
     }
   },
   "require": {
-    "wp-launchpad/core": "^0.2"
+    "wp-launchpad/core": "dev-version/0.3.0"
   },
   "require-dev": {
     "wp-media/phpunit": "^3.0",
