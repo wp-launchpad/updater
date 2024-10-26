@@ -3,7 +3,9 @@
 namespace WP_Rocket\Tests\Integration;
 
 use LaunchpadCore\EventManagement\EventManager;
+use LaunchpadCore\EventManagement\Wrapper\SubscriberWrapper;
 use LaunchpadCore\Plugin;
+use LaunchpadDispatcher\Dispatcher;
 use LaunchpadUpdater\ServiceProvider;
 use League\Container\Container;
 
@@ -12,9 +14,12 @@ tests_add_filter(
     'muplugins_loaded',
     function() {
 
-        $plugin = new Plugin(new Container(), new EventManager());
+		$prefix = 'test';
+		$container = new Container();
+
+        $plugin = new Plugin($container, new EventManager(), new SubscriberWrapper($prefix, $container), new Dispatcher());
         $plugin->load([
-            'prefix' => 'test',
+            'prefix' => $prefix,
             'version' => '3.16'
         ], [
             ServiceProvider::class,
