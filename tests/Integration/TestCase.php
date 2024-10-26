@@ -9,6 +9,8 @@ abstract class TestCase extends BaseTestCase
     protected $config;
     protected static $transients         = [];
 
+	protected $error_level;
+
     public static function set_up_before_class() {
         parent::set_up_before_class();
 

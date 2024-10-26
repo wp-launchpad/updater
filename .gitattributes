@@ -5,6 +5,7 @@ bin export-ignore
 // files
 .gitattributes export-ignore
 .gitignore export-ignore
+tests/Integration/.phpunit.result.cache
 
 composer.lock export-ignore
 LICENSE export-ignore

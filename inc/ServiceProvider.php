@@ -29,9 +29,9 @@ class ServiceProvider extends AbstractServiceProvider
      */
     public function define()
     {
-        $this->register_service(\LaunchpadUpdater\Subscriber::class, function (Definition $definition) {
-            $definition->addArgument($this->getContainer()->get('prefix'));
-            $definition->addArgument($this->getContainer()->get('version'));
-        });
+        $this->register_admin_subscriber(\LaunchpadUpdater\Subscriber::class)->set_definition(function (Definition $definition) {
+			$definition->addArgument('prefix');
+			$definition->addArgument('version');
+		});
     }
 }
