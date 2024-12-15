@@ -1,38 +1,42 @@
 {
-  "name": "wp-launchpad/updater",
-  "description": "Updater from Launchpad",
-  "minimum-stability": "dev",
-  "keywords": [
-    "wordpress"
-  ],
-  "license": "GPL-2.0-or-later",
-  "authors": [
-    {
-      "name": "CrochetFeve0251"
+    "name": "wp-launchpad/updater",
+    "description": "Updater from Launchpad",
+    "keywords": [
+        "wordpress"
+    ],
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "CrochetFeve0251"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "LaunchpadUpdater\\": "inc/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LaunchpadUpdater\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "wp-launchpad/core": "^3.1"
+    },
+    "require-dev": {
+        "wp-media/phpunit": "^3.0",
+        "wp-launchpad/build": "^3.1"
+    },
+    "scripts": {
+        "test-unit": "\"vendor/bin/phpunit\" --testsuite unit --colors=always --configuration tests/Unit/phpunit.xml.dist",
+        "test-integration-admin": "\"vendor/bin/phpunit\" --testsuite integration --colors=always --configuration tests/Integration/phpunit.xml.dist --group AdminOnly",
+        "run-tests": [
+            "@test-integration-admin"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "feature/ll-subscribers": "3.1-dev"
+        }
     }
-  ],
-  "autoload": {
-    "psr-4": {
-      "LaunchpadUpdater\\": "inc/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "LaunchpadUpdater\\Tests\\": "tests/"
-    }
-  },
-  "require": {
-    "wp-launchpad/core": "^0.3 || @dev"
-  },
-  "require-dev": {
-    "wp-media/phpunit": "^3.0",
-    "wp-launchpad/build": "^0.0.9 || @dev"
-  },
-  "scripts": {
-    "test-unit": "\"vendor/bin/phpunit\" --testsuite unit --colors=always --configuration tests/Unit/phpunit.xml.dist",
-    "test-integration-admin": "\"vendor/bin/phpunit\" --testsuite integration --colors=always --configuration tests/Integration/phpunit.xml.dist --group AdminOnly",
-    "run-tests": [
-      "@test-integration-admin"
-    ]
-  }
 }
